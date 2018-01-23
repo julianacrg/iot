@@ -1,18 +1,22 @@
 Requisitos:
 
 Cadastro do medicamento
+   -id
    -Nome
    -Horário
-   -Frequencia
-   -Tempo
+   -Frequencia (de x em x horas)
+   -Tempo (durante X dias)
    -Dosagem
-   -Localização na caixa
   
-
 Registro
+   -id
    -Confirmação
-   -Horário 
+   -Horário
+   -id_med 
    
-
+compartimento
+   -id (definir de acordo com n de comp          da caixa)
+   -Qtd de medicamento
+   -id_med
 
 
