@@ -134,7 +134,7 @@ require_once 'Controller/cadastraMedicamento.php';
 <div class="form-group">
   <label class="col-md-4 control-label" for="res">Responsavel</label>  
   <div class="col-md-4">
-  <select id="select" name="res" class="form-control" required>
+  <select id="select" name="res_med" class="form-control" required>
                         <option value=""> Selecione</option>
                         <?php
                         $stmt = $responsavel->index();
