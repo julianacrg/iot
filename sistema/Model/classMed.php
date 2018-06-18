@@ -6,10 +6,11 @@ class Medicamento{
 
 	private $id_med;
 	private $nome_med;
-	private $dosagem;
 	private $horario;
 	private $frequencia;
-	private $tempo;
+	private $comp_med;
+	private $res_med;
+
 
 	public function __construct() {
 		$database = new Database();
@@ -25,10 +26,6 @@ class Medicamento{
 		$this->nome_med = $value;
 	}
 
-	function setDosagem($value){
-		$this->dosagem = $value;
-	}
-
 	function setHorario($value){
 		$this->horario = $value;
 	}
@@ -37,19 +34,23 @@ class Medicamento{
 		$this->frequencia = $value;
 	}
 
-	function setTempo($value){
-		$this->tempo = $value;
+	function setComp_med($value){
+		$this->comp_med = $value;
+	}
+
+	function setRes_med($value){
+		$this->res_med = $value;
 	}
 
 
 	public function insert(){
 		try{
-			$stmt = $this->conn->prepare("INSERT INTO `medicamento`(`nome_med`, `dosagem`, `horario`,`frequencia`,`tempo`) VALUES (:nome_med, :dosagem, :horario, :frequencia, :tempo)");
+			$stmt = $this->conn->prepare("INSERT INTO `medicamento`(`nome_med`, `horario`,`frequencia`, `comp_med`, `res_med`) VALUES (:nome_med, :horario, :frequencia, :comp_med, :res_med)");
 			$stmt->bindParam(":nome_med", $this->nome_med);
-			$stmt->bindParam(":dosagem", $this->dosagem);
 			$stmt->bindParam(":horario", $this->horario);
 			$stmt->bindParam(":frequencia", $this->frequencia);
-			$stmt->bindParam(":tempo", $this->tempo);
+			$stmt->bindParam(":comp_med", $this->comp_med);
+			$stmt->bindParam(":res_med", $this->res_med);
 			$stmt->execute();
 			return 1;
 		}catch(PDOException $e){
@@ -60,13 +61,13 @@ class Medicamento{
 
 	public function edit(){
 		try{
-			$stmt = $this->conn->prepare("UPDATE `medicamento` SET `nome_med` = :nome_med, `dosagem` = :dosagem, `horario` = :horario, `frequencia` = :frequencia, `tempo` = :tempo WHERE `id_med` = :id_med");
+			$stmt = $this->conn->prepare("UPDATE `medicamento` SET `nome_med` = :nome_med, `horario` = :horario, `frequencia` = :frequencia, `comp_med` = :comp_med WHERE `id_med` = :id_med");
 			$stmt->bindParam(":id_med", $this->id_med);
 			$stmt->bindParam(":nome_med", $this->nome_med);
-			$stmt->bindParam(":dosagem", $this->dosagem);
 			$stmt->bindParam(":horario", $this->horario);
 			$stmt->bindParam(":frequencia", $this->frequencia);
-			$stmt->bindParam(":tempo", $this->tempo);
+			$stmt->bindParam(":comp_med", $this->comp_med);
+			$stmt->bindParam(":res_med", $this->res_med);
 			$stmt->execute();
 			return 1;
 		}catch(PDOException $e){
